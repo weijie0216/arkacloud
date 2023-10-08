@@ -8,12 +8,12 @@
     }
   ],
   "docBase": "http://docs.cloudstack.apache.org/en/latest",
-  "appTitle": "CloudStack",
-  "footer": "Licensed under the <a href='http://www.apache.org/licenses/' target='_blank'>Apache License</a>, Version 2.0.",
+  "appTitle": "Cirrus",
+  "footer": "",
   "loginFooter": "",
-  "logo": "assets/logo.svg",
-  "minilogo": "assets/mini-logo.svg",
-  "banner": "assets/banner.svg",
+  "logo": "assets/cirrus-banner.png",
+  "minilogo": "assets/cirrus-mini.png",
+  "banner": "assets/cirrus-banner.png",
   "error": {
     "403": "assets/403.png",
     "404": "assets/404.png",
@@ -47,8 +47,8 @@
     "@logo-height": "64px",
     "@mini-logo-width": "80px",
     "@mini-logo-height": "64px",
-    "@banner-width": "700px",
-    "@banner-height": "110px",
+    "@banner-width": "500px",
+    "@banner-height": "150px",
     "@error-width": "256px",
     "@error-height": "256px"
   },
