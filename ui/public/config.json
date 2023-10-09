@@ -11,9 +11,9 @@
   "appTitle": "Cirrus",
   "footer": "",
   "loginFooter": "",
-  "logo": "assets/cirrus-banner.png",
-  "minilogo": "assets/cirrus-mini.png",
-  "banner": "assets/cirrus-banner.png",
+  "logo": "assets/cirrus-banner.svg",
+  "minilogo": "assets/cirrus-mini.svg",
+  "banner": "assets/cirrus-banner.svg",
   "error": {
     "403": "assets/403.png",
     "404": "assets/404.png",
