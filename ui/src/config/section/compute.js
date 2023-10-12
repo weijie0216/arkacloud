@@ -459,7 +459,7 @@ export default {
       docHelp: 'plugins/cloudstack-kubernetes-service.html',
       permission: ['listKubernetesClusters'],
       columns: (store) => {
-        var fields = ['name', 'state', 'clustertype', 'size', 'cpunumber', 'memory', 'kubernetesversionname']
+        var fields = ['name', 'state', 'size', 'cpunumber', 'memory', 'kubernetesversionname']
         if (['Admin', 'DomainAdmin'].includes(store.userInfo.roletype)) {
           fields.push('account')
         }
@@ -469,11 +469,7 @@ export default {
         fields.push('zonename')
         return fields
       },
-      filters: () => {
-        const filters = ['cloud.managed', 'external.managed']
-        return filters
-      },
-      details: ['name', 'description', 'zonename', 'kubernetesversionname', 'autoscalingenabled', 'minsize', 'maxsize', 'size', 'controlnodes', 'cpunumber', 'memory', 'keypair', 'associatednetworkname', 'account', 'domain', 'zonename', 'clustertype', 'created'],
+      details: ['name', 'description', 'zonename', 'kubernetesversionname', 'autoscalingenabled', 'minsize', 'maxsize', 'size', 'controlnodes', 'cpunumber', 'memory', 'keypair', 'associatednetworkname', 'account', 'domain', 'zonename', 'created'],
       tabs: [{
         name: 'k8s',
         component: shallowRef(defineAsyncComponent(() => import('@/views/compute/KubernetesServiceTab.vue')))
@@ -496,7 +492,7 @@ export default {
           message: 'message.kubernetes.cluster.start',
           docHelp: 'plugins/cloudstack-kubernetes-service.html#starting-a-stopped-kubernetes-cluster',
           dataView: true,
-          show: (record) => { return ['Stopped'].includes(record.state) && record.clustertype === 'CloudManaged' },
+          show: (record) => { return ['Stopped'].includes(record.state) },
           groupAction: true,
           popup: true,
           groupMap: (selection) => { return selection.map(x => { return { id: x } }) }
@@ -508,7 +504,7 @@ export default {
           message: 'message.kubernetes.cluster.stop',
           docHelp: 'plugins/cloudstack-kubernetes-service.html#stopping-kubernetes-cluster',
           dataView: true,
-          show: (record) => { return !['Stopped', 'Destroyed', 'Destroying'].includes(record.state) && record.clustertype === 'CloudManaged' },
+          show: (record) => { return ['Created', 'Running', 'Stopped'].includes(record.state) },
           groupAction: true,
           popup: true,
           groupMap: (selection) => { return selection.map(x => { return { id: x } }) }
@@ -520,7 +516,7 @@ export default {
           message: 'message.kubernetes.cluster.scale',
           docHelp: 'plugins/cloudstack-kubernetes-service.html#scaling-kubernetes-cluster',
           dataView: true,
-          show: (record) => { return ['Created', 'Running', 'Stopped'].includes(record.state) && record.clustertype === 'CloudManaged' },
+          show: (record) => { return ['Created', 'Running', 'Stopped'].includes(record.state) },
           popup: true,
           component: shallowRef(defineAsyncComponent(() => import('@/views/compute/ScaleKubernetesCluster.vue')))
         },
@@ -531,7 +527,7 @@ export default {
           message: 'message.kubernetes.cluster.upgrade',
           docHelp: 'plugins/cloudstack-kubernetes-service.html#upgrading-kubernetes-cluster',
           dataView: true,
-          show: (record) => { return ['Created', 'Running'].includes(record.state) && record.clustertype === 'CloudManaged' },
+          sshow: (record) => { return ['Created', 'Running'].includes(record.state) },
           popup: true,
           component: shallowRef(defineAsyncComponent(() => import('@/views/compute/UpgradeKubernetesCluster.vue')))
         },
